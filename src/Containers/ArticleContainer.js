@@ -4,7 +4,7 @@ import ArticleCard from '../Components/ArticleCard'
 class ArticleContainer extends Component {
 
     renderArts = () => {
-        console.log(this.props.articles)
+        // console.log(this.props.articles)
         return this.props.articles.map((artObj) => <ArticleCard id={artObj.id} article={artObj} />)
     }
 
