@@ -7,7 +7,7 @@ class App extends Component {
   state = {
     api: [],
     favApi: [],
-    favorite: false
+    // favorite: false
   };
 
   componentDidMount() {
@@ -21,14 +21,14 @@ class App extends Component {
     let newApi = [...this.state.api];
     let findId = newApi.find(el => el.id === id);
     findId.favorite = true;
-    this.setState({api: newApi});
+    this.setState({favApi: newApi});
   }
 
   deleteFav = (id) => {
     let newApi = [...this.state.api];
     let findId = newApi.find(el => el.id === id);
     findId.favorite = false;
-    this.setState({api: newApi})
+    this.setState({favA: newApi})
   }
 
   findFavorites = () => {
