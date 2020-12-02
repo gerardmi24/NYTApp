@@ -5,7 +5,7 @@ class ArticleContainer extends Component {
 
     renderArts = () => {
         // console.log(this.props.articles)
-        return this.props.articles.map((artObj) => <ArticleCard id={artObj.id} article={artObj} />)
+        return this.props.articles.map((artObj) => <ArticleCard key={artObj.id} article={artObj} clickHandler={this.props.clickHandler} />)
     }
 
     render() {

@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
 import ArticleContainer from './Containers/ArticleContainer'
+import Favorites from './Containers/Favorites'
 
 class App extends Component {
 
   state = {
-    api: []
+    api: [],
+    favorite: false
   };
 
   componentDidMount() {
@@ -13,15 +15,31 @@ class App extends Component {
     .then(data => this.setState({api: data.results}));
   };
 
-  // renderArts = () => {
-  //   return this.state.api.results.map(article => <ArticleContainer key={article.id} article={article} />)
-  // };
+  addFavArt = (id) => {
+    console.log("ID in App", id)
+    let newApi = [...this.state.api];
+    let findId = newApi.find(el => el.id === id);
+    findId.favorite = true;
+    this.setState({api: newApi});
+  }
+
+  deleteFav = (id) => {
+    let newApi = [...this.state.api];
+    let findId = newApi.find(el => el.id === id);
+    findId.favorite = false;
+    this.setState({api: newApi})
+  }
+
+  findFavorites = () => {
+    return this.state.api.filter(el => el.favorite);
+  }
 
   render() {
-    // console.log(this.state)
+    // console.log(this.state.api)
     return (
       <div className="App">
-        <ArticleContainer articles={this.state.api} />
+        <ArticleContainer articles={this.state.api} clickHandler={this.addFavArt} />
+        <Favorites articles={this.findFavorites()} clickHandler={this.deleteFav} />
       </div>
     )
   }
