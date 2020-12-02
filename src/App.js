@@ -28,7 +28,7 @@ class App extends Component {
     let newApi = [...this.state.api];
     let findId = newApi.find(el => el.id === id);
     findId.favorite = false;
-    this.setState({favA: newApi})
+    this.setState({favApi: newApi})
   }
 
   findFavorites = () => {
