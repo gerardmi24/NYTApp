@@ -6,6 +6,7 @@ class App extends Component {
 
   state = {
     api: [],
+    favApi: [],
     favorite: false
   };
 
